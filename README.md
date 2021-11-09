@@ -1,1 +1,0 @@
-# ekwantu_ansible
