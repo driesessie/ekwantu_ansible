@@ -2,8 +2,6 @@
 - name: Provisioning GatewayBW
   hosts: all
   remote_user: root
-
-  hosts: all
   become: true
   roles: 
     - groups
