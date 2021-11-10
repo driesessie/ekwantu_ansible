@@ -6,10 +6,6 @@
   hosts: all
   become: true
   roles: 
-    - packages
-
-  hosts: all
-  become: true
-  roles:
+    - groups
     - users
-  
+    - packages

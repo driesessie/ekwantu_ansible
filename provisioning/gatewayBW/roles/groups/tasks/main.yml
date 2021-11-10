@@ -11,3 +11,22 @@
     name: iibadm
     state: present
      gid: 144
+
+
+- name: Ensure group esbcom exists.
+  ansible.builtindin.group: 
+    name: esbcom
+    state: present
+    uid:
+    group: 
+      
+- name: Ensure group mqbrkrs exists with the correct gid
+  ansible.builtin.group: 
+    name: mqbrkrs
+    state: present
+    gid: 19998
+
+- name: Ensure group esbcom exists.
+  ansible.builtin.group: 
+   name: esbcom
+   state: present
