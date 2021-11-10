@@ -1,2 +1,51 @@
 ---
-# tasks file for users
+- name: Creating the users.
+  hosts:  all
+  become: true
+
+  tasks:
+
+
+    - name: Create Users.
+      user:
+        name: mqm
+        state: present
+        comment: mqm user
+        uid: 206
+        group: mqbrkrs
+        
+        
+
+    - name: Add users to group mqbrkrs.
+      user:
+        name: "{{ item }}"mqm
+        groups: mqbrkrs
+        append: yes
+        loop :
+          - mqm
+          - esbcom
+          - wbrkadm
+
+    - name: Ensure group iibadm exists with the correct gid.
+      ansible.builtin.group:
+        name: iibadm
+        state: present
+        gid: 144
+
+    - name: Ensure group esbcom exists.
+      ansible.builtindin.group: 
+      name: esbcom
+      state: present
+      uid:
+      group: 
+      
+      - name: Ensure group mqbrkrs exists with the correct gid
+      ansible.builtin.group: 
+        name: mqbrkrs
+        state: present
+        gid: 19998
+
+    - name: Ensure group esbcom exists.
+      ansible.builtin.group: 
+      name: esbcom
+      state: present

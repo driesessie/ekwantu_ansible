@@ -1,0 +1,13 @@
+---
+#
+- name: Ensure group mqbrkrs exists with the correct gid
+  ansible.builtin.group: 
+    name: mqbrkrs
+    state: present
+    gid: 19998 
+
+- name: Ensure group iibadm exists with the correct gid.
+  ansible.builtin.group:
+    name: iibadm
+    state: present
+     gid: 144
