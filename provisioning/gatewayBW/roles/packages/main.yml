@@ -1,0 +1,29 @@
+  - name: Installing telnet.
+      ansible.builtin.yum:
+        name: telnet
+        state: latest
+
+    - name: Installing libstd dev.
+     ansible.builtin.yum:
+       name: libstdc++-devel
+       state: latest
+   
+    - name: Installing X-Org server.
+      ansible.builtin.yum: 
+        name: xorg-x11-server-Xorg
+        state: latest
+
+   - name: Installing X-auth.
+     ansible.builtin.yum:
+       name: xorg-x11-xauth
+       state: latest
+
+   - name: Installing X-Auth apps.
+     ansible.builtin.yum:
+       name: xorg-x11-apps
+       state: latest
+
+   - name: Installing xinfo.
+     ansible.builtin.yum:
+       name: xdpyinfo 
+       state: latest

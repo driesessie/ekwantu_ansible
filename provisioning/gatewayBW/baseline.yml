@@ -1,0 +1,15 @@
+---
+- name: Provisioning GatewayBW
+  hosts: all
+  remote_user: root
+
+  hosts: all
+  become: true
+  roles: 
+    - packages
+
+  hosts: all
+  become: true
+  roles:
+    - users
+  
