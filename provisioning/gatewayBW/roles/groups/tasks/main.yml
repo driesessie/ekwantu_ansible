@@ -1,22 +1,6 @@
 ---
 
-- name: Ensure group mqbrkrs exists with the correct gid
-  ansible.builtin.group: 
-    name: mqbrkrs
-    state: present
-    gid: 19998 
-
-- name: Ensure group iibadm exists with the correct gid.
+- name: Ensure group "somegroup" exists
   ansible.builtin.group:
-    name: iibadm
+    name: somegroup
     state: present
-    gid: 144
-
-
-- name: Ensure group esbcom exists.
-  ansible.builtindin.group: 
-    name: esbcom
-    state: present
-      
-      
-

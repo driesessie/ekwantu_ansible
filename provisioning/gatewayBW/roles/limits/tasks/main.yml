@@ -1,2 +1,20 @@
 ---
-# tasks file for limits
+- name: Updating the limits configuration
+  lineinfile: 
+    dest: /etc/security/limits.conf
+    state: present
+    insertafter=EOF
+    create: True 
+ 
+
+
+
+  loop:
+    - 'mqm             soft    nofile          10240'
+    - 'mqm             hard    nofile          10240'
+    - 'mqm             soft    nproc           10240'
+    - 'mqm             hard    nproc           10240'
+    - '*               hard    nofile          10240'
+    - '*               hard    stack           10240'
+    - '*               soft    nofile          10240 '
+

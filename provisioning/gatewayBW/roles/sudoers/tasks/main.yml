@@ -1,2 +1,7 @@
 ---
-- name: Enable config files in sudoers.
+- name: Make sure we can read files in sudoers.
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^#includedir /etc/sudoers.d'
+    line: 'includedir /etc/sudoers.d'
