@@ -27,3 +27,8 @@
   ansible.builtin.yum:
     name: xdpyinfo 
     state: latest
+
+- name: Installing gfs. 
+  ansible.builtin.yum:
+    name: gfs
+    state: latest

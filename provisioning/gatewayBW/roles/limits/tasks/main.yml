@@ -3,12 +3,9 @@
   lineinfile: 
     dest: /etc/security/limits.conf
     state: present
-    insertafter=EOF
+    insertafter: EOF
     create: True 
  
-
-
-
   loop:
     - 'mqm             soft    nofile          10240'
     - 'mqm             hard    nofile          10240'

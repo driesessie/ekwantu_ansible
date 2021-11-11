@@ -1,6 +1,12 @@
 ---
-
-- name: Ensure group "somegroup" exists
-  ansible.builtin.group:
-    name: somegroup
+- name: Ensure group "esbcom" exists
+  group:
+    name: esbcom
     state: present
+
+- name: Ensure group "mqbrkrs" exists.
+  group: 
+    name: mqbrkrs
+    state: present
+    gid: 19998
+
