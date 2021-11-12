@@ -4,11 +4,8 @@
     name: "{{ packages }}"
   vars:
     packages:
-      telnet
-      libstdc++-devel
-      xorg-x11-server-Xorg
-      xorg-x11-xauth
-      xorg-x11-apps
-      xdpyinfo
+      pcs 
+      pacemaker
+      fence-agents-all
 
    state: present
