@@ -1,9 +1,0 @@
-mqm    ALL= NOPASSWD: /usr/bin/rpm -i -v /softwares/MQ_and_ESB_BRK/*
-mqm    ALL= NOPASSWD: /opt/mqm/bin/setmqinst -n Installation1 -p /opt/mqm -i
-mqm    ALL= NOPASSWD: /usr/bin/rpm -e MQ*
-mqm    ALL= NOPASSWD: /usr/bin/chown -v bin\:bin /opt/mqm/*
-mqm    ALL= NOPASSWD: /usr/bin/chmod -v 444 /opt/mqm/*
-mqm    ALL= NOPASSWD: /usr/bin/chown -Rv mqm\:fteagent /gpfsmft/mqft*
-mqm    ALL= NOPASSWD: /usr/bin/chown -Rv fteagent\:fteagent /gpfsmft/mqft*
-mqm    ALL= NOPASSWD: /usr/bin/sh /softwares/*
-mqm    ALL= NOPASSWD: /usr/bin/sh /softwares/MQ_and_ESB_BRK/MQ9000_LINUX_x86/mqlicense.sh -accept
