@@ -1,0 +1,20 @@
+---
+- name: Update the HA repo.
+  lineinfile:
+    dest: /etc/yum.repos.d/HA.repo
+    block: |
+      '[HA]'
+      'name=HA'
+      'baseurl=file:///mnt/addons/HighAvailability'
+      'gpgcheck=0'
+      'enabled=1'
+
+- name: Update the RE repo.
+  blockinfile:
+    dest: /etc/yum.repos.d/RE.repo
+    block: |
+      '[RE]'
+      'name=HA'
+      'baseurl=file:///mnt/addons/ResilientStorage'
+      'gpgcheck=0'
+      'enabled=1'
