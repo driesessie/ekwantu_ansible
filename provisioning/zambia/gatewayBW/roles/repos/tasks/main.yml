@@ -1,20 +1,12 @@
 ---
-- name: Update the HA repo.
-  lineinfile:
-    dest: /etc/yum.repos.d/HA.repo
-    block: |
-      '[HA]'
-      'name=HA'
-      'baseurl=file:///mnt/addons/HighAvailability'
-      'gpgcheck=0'
-      'enabled=1'
-
-- name: Update the RE repo.
+- name: Update the redhat repos
   blockinfile:
-    dest: /etc/yum.repos.d/RE.repo
-    block: |
-      '[RE]'
-      'name=HA'
-      'baseurl=file:///mnt/addons/ResilientStorage'
-      'gpgcheck=0'
-      'enabled=1'
+  dest: /etc/yum.repos.d/rhel.repo
+  block: |
+    '#Begin Ansible Managed block'
+    '[rhel]'
+    'name=rhel'
+    'baseurl=file:///mnt'
+    'gpgcheck=0'
+    'enabled=1'
+    '#End Ansible block'

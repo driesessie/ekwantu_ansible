@@ -1,2 +1,24 @@
 ---
-# tasks file for repos
+- name: Update the HA repo.
+  lineinfile:
+    dest: /etc/yum.repos.d/HA.repo
+    block: |
+      '#Begin Anible managed block'
+      '[HA]'
+      'name=HA'
+      'baseurl=file:///mnt/addons/HighAvailability'
+      'gpgcheck=0'
+      'enabled=1'
+      '#End Ansible managed block'
+
+- name: Update the RE repo.
+  blockinfile:
+    dest: /etc/yum.repos.d/RE.repo
+    block: |
+      '#Begin Anible managed block'
+      '[RE]'
+      'name=HA'
+      'baseurl=file:///mnt/addons/ResilientStorage'
+      'gpgcheck=0'
+      'enabled=1'
+      '#End Ansible managed block'
