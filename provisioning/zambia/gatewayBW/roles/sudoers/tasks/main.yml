@@ -1,0 +1,13 @@
+---
+- name: Make sure we can read files in sudoers.
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^#includedir /etc/sudoers.d'
+    line: 'includedir /etc/sudoers.d'
+
+- name: Update the sudoers.
+  ansible.builtin.template:
+    src: ../templates/mq.j2
+    dest: /etc/sudoers.d/mq
+    

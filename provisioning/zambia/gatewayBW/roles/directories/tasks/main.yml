@@ -1,0 +1,17 @@
+---
+- name: Create the required directories.
+  file:
+    path: "{{ item }}"
+    owner: mqm
+    group: mqm
+    state: directory
+    mode: 0755
+    with_items:
+      - '/gpfsgwy/pbwgwy1/mq/data'
+      - '/gpfsgwy/pbwgwy2/mq/data'
+      - '/gpfsgwy/pbwfte1/mq/data'
+      - '/gpfsgwy/pbwfte1/mq/log'
+      - '/gpfsgwy/pbwgwy1/mq/log'
+      - '/gpfsgwy/pbwgwy2/mq/log'
+
+
