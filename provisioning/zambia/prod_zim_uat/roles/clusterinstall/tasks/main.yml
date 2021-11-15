@@ -1,33 +1,32 @@
----
-- name: Starting pcsd services 
-  shell: |
-    "systemctl start pcsd.service"
-    "systemctl enable pcsd.service"
-    "systemctl status pcsd.service"
-    "pcs cluster auth UZMGWYW1.zm.sbicdirectory.com UZMGWYW2.zm.sbicdirectory.com"
-    "pcs cluster setup --start --name gpfscluster UZMGWYW1.zm.sbicdirectory.com  UZMGWYW2.zm.sbicdirectory.com"
-    "pcs cluster enable --all"
 
-- name: Check status of enable command.
-  register: cluster_enable
-  shell: "pcs cluster enable --all"
+# - name: Start pcsd services.
+#     ansible.builtin.command: systemctl start pcsd.service
+#     ansible.builtin.command: systemctl enable pcsd.service
+#     ansible.builtin.command: systemctl status pcsd.service
+#     ansible.builtin.command: pcs cluster auth UZMGWYW1.zm.sbicdirectory.com UZMGWYW2.zm.sbicdirectory.com
+#     ansible.builtin.command: pcs cluster setup --start --name gpfscluster UZMGWYW1.zm.sbicdirectory.com  UZMGWYW2.zm.sbicdirectory.com
+#     ansible.builtin.command: pcs cluster enable --all
 
-- name: Print the status of "pcs cluster enable --all"
-  debug:
-    msg: "Is the cluster enabled {{ cluster_enable }}"
+# - name: Check status of enable command.
+#   register: cluster_enable
+#   shell: "pcs cluster enable --all"
+
+# - name: Print the status of "pcs cluster enable --all"
+#   debug:
+#     msg: "Is the cluster enabled {{ cluster_enable }}"
     
-- name: Print the status of the cluster
-  register: cluster_status
-  shell: "pcs cluster status"
+# - name: Print the status of the cluster
+#   register: cluster_status
+#   shell: "pcs cluster status"
 
-- name: Print the output of "pcs cluster status"
-  debug:
-    msg: "The cluster status is {{ cluster_status }}"
+# - name: Print the output of "pcs cluster status"
+#   debug:
+#     msg: "The cluster status is {{ cluster_status }}"
 
-- name: Check pcs status.
-  register: pcs_status
-  shell: "pcs status"
+# - name: Check pcs status.
+#   register: pcs_status
+#   shell: "pcs status"
 
-- name: print pcs status.
-  debug:
-    msg: " The pcs status is {{ pcs_status }}"
+# - name: print pcs status.
+#   debug:
+#     msg: " The pcs status is {{ pcs_status }}"
