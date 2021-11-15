@@ -1,6 +1,6 @@
 ---
 - name: Create the required directories.
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     owner: mqm
     group: mqm

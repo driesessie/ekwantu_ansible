@@ -1,13 +1,6 @@
 ---
 - name: Starting pcsd services 
-  shell:
+  shell: |
     "systemctl start pcsd.service"
-
-- name: Enable pcsd services
-  shell:
     "systemctl enable pcsd.service"
-
-- name: check the status of the pcsd services
-  shell: 
     "systemctl status pcsd.service"
-    

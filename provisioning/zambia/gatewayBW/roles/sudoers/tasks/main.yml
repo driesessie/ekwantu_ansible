@@ -1,6 +1,6 @@
 ---
 - name: Make sure we can read files in sudoers.
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/sudoers
     state: present
     regexp: '^#includedir /etc/sudoers.d'
@@ -10,4 +10,4 @@
   ansible.builtin.template:
     src: ../templates/mq.j2
     dest: /etc/sudoers.d/mq
-    
+    validate: /usr/sbin/visudo -cf %s
