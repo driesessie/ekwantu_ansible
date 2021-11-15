@@ -6,4 +6,19 @@
     - "pcs stonith create uzmgwywfence fence_vmware_rest pcmk_host_map="UZMGWYW1.zm.sbicdirectory.com:zamcibuat01;UZMGWYW2.zm.sbicdirectory.com:zamcibuat02" ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" \
          login="fenceuser@vsphere.local" passwd="ZambiaMQ@2021" ssl_insecure=1  pcmk_monitor_timeout=60s"
     
+- name: Checking the pcs stonith show pbwgwywfence output.
+  register: show_host
+  shell: "pcs stonith show pbwgwywfence"
+
+- name: Print the status of stonith show host.
+  debug:
+    msg: "The output of stonith show host is {{ show_host }}"
+
+- name: Checking the "pcs stonith show --full" output.
+  register: pcs_all
+  shell: "pcs stonith show --full"
+
+- name: Print the status of "pcs stonith show --full".
+  debug:
+    msg: "The status is {{ pcs_all }}"
 

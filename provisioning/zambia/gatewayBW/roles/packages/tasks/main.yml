@@ -10,4 +10,4 @@
       xorg-x11-apps
       xdpyinfo
    
-   state:present
+  state: present

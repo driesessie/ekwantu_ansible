@@ -1,7 +1,7 @@
 ---
 - name: Updating the limits configuration
-  lineinfile: 
-    dest: /etc/security/limits.conf
+  ansible.builtin.lineinfile: 
+    path: /etc/security/limits.conf
     state: present
     insertafter: EOF
     create: True 
