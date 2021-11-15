@@ -1,11 +1,12 @@
-
-# - name: Start pcsd services.
-#     ansible.builtin.command: systemctl start pcsd.service
-#     ansible.builtin.command: systemctl enable pcsd.service
-#     ansible.builtin.command: systemctl status pcsd.service
-#     ansible.builtin.command: pcs cluster auth UZMGWYW1.zm.sbicdirectory.com UZMGWYW2.zm.sbicdirectory.com
-#     ansible.builtin.command: pcs cluster setup --start --name gpfscluster UZMGWYW1.zm.sbicdirectory.com  UZMGWYW2.zm.sbicdirectory.com
-#     ansible.builtin.command: pcs cluster enable --all
+ ---
+- name: Start pcsd services.
+  shell: |
+    - "systemctl start pcsd.service"
+    - "systemctl enable pcsd.service"
+    - "systemctl status pcsd.service"
+    - "pcs cluster auth UZMGWYW1.zm.sbicdirectory.com UZMGWYW2.zm.sbicdirectory.com"
+    - "pcs cluster setup --start --name gpfscluster UZMGWYW1.zm.sbicdirectory.com  UZMGWYW2.zm.sbicdirectory.com"
+    - "pcs cluster enable --all"
 
 # - name: Check status of enable command.
 #   register: cluster_enable
