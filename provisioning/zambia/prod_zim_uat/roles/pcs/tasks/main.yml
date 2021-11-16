@@ -1,0 +1,40 @@
+---
+- name: Create resource
+  register: createresource
+  ansible.builtin.shell:
+    - pcs resource create uzmgwyw-dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true
+   
+  debug:
+    mesg: createresource
+
+- name: Enable cluster
+  register: enablecluster
+  ansible.builtin.shell:
+    - /sbin/lvmconf --enable-cluster 
+
+- name: create Heartbeat
+  ansible.builtin.shell:
+    - pcs resource create uzmgwyw-clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true
+
+  debug: 
+    msg: enablecluster
+
+- name: create constraints
+  ansible.builtin.shell: |
+    - pcs constraint order start uzmgwyw-dlm-clone then uzmgwyw-clvmd-clone
+    - pcs constraint colocation add uzmgwyw-clvmd-clone with uzmgwyw-dlm-clone
+
+- name: set property
+  ansible.builtin.shell: 
+    - pcs property set no-quorum-policy=freeze
+
+- name: stop lvm
+  register: statuslvmetad
+  ansible.builtin.shell: systemctl '{{ item }}'
+  loop:
+    - stop lvm2-lvmetad
+    - disable lvm2-lvmetad
+    - status lvm2-lvmetad
+
+  debug:
+    mesg: statuslvmetad
