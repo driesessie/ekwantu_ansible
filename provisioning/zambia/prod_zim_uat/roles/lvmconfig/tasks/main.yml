@@ -7,22 +7,5 @@
   tags:
     - lvmconfig
 
-- name: Create resource
-  register: createresource
-  ansible.builtin.shell:
-    - pcs resource create uzmgwyw-dlm ocf:pacemaker:controld op monitor interval=30s on-fail=fence clone interleave=true ordered=true
-   
-  debug:
-    mesg: createresource
-
-- name: Enable cluster
-  register: enablecluster
-  ansible.builtin.shell:
-    - /sbin/lvmconf --enable-cluster 
-
-- name: create Heartbeat
-  ansible.builtin.shell:
-    - pcs resource create uzmgwyw-clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true
-
-  debug: 
-    msg: enablecluster
+- name: Create physical volume
+  pv: action=create disks=/dev/sdb --options="--physicalextentsize 128K"
