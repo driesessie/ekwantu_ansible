@@ -1,3 +1,0 @@
----
-- name: Create physical volume
-  pv: action=create disks=/dev/sdb --options="--physicalextentsize 128K"

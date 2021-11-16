@@ -8,4 +8,43 @@
     - lvmconfig
 
 - name: Create physical volume
-  pv: action=create disks=/dev/sdb --options="--physicalextentsize 128K"
+  community.general.lvg:
+  vg: ClusterDatavg
+  pvs: /dev/sdb 
+
+
+- name: Create a Logical volume uzmgwyw1datalv.
+  community.general.lvol:
+    vg: ClusterDatavg
+    lv: uzmgwyw1datalv
+    size: 30G
+
+- name: Create a Logical volume uzmgwyw2datalv.
+  community.general.lvol:
+    vg: ClusterDatavg
+    lv: uzmgwyw2datalv
+    size: 30G
+
+- name: Create a Logical volume uzmgwyw1loglv.
+  community.general.lvol:
+    vg: ClusterDatavg
+    lv: uzmgwyw1loglv
+    size: 30G
+
+- name: Create a Logical volume uzmgwyw2loglv.
+  community.general.lvol:
+    vg: ClusterDatavg
+    lv: uzmgwyw2loglv
+    size: 30G
+
+- name: Create a Logical volume uzmfte1datalv.
+  community.general.lvol:
+    vg: ClusterDatavg
+    lv: uzmfte1datalv
+    size: 30G
+
+- name: Create a Logical volume uzmfte1loglv.
+  community.general.lvol:
+    vg: ClusterDatavg
+    lv: uzmfte1loglv
+    size: 30G
