@@ -1,6 +1,7 @@
-- pre_tasks:
-  - name: update cache
-    yum: update_cache=yes cache_valid_time=86400
+
+- name: update cache
+  yum: 
+    update_cache: true
 
 - name: Installing packages needed.
   yum:
@@ -14,4 +15,4 @@
       xorg-x11-apps
       xdpyinfo
    
-  state: present
+  state: latest
