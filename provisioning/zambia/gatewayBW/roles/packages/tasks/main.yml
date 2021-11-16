@@ -1,6 +1,6 @@
 - pre_tasks:
-    - name: update cache
-      yum: update_cache=yes cache_valid_time=86400
+  - name: update cache
+    yum: update_cache=yes cache_valid_time=86400
 
 - name: Installing packages needed.
   yum:
