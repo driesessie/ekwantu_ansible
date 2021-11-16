@@ -48,3 +48,13 @@
     vg: ClusterDatavg
     lv: uzmfte1loglv
     size: 30G
+
+- name: Formatting the created logical volumes.
+  ansible.builtin.shell: '{{ item }}'
+  loop:
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw1datalv /dev/mapper/ClusterDatavg-uzmgwyw1datalv
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw2datalv /dev/mapper/ClusterDatavg-uzmgwyw2datalv
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw1loglv /dev/mapper/ClusterDatavg-uzmgwyw1loglv
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw2loglv /dev/mapper/ClusterDatavg-uzmgwyw2loglv
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmfte1datalv /dev/mapper/ClusterDatavg-uzmfte1datalv
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmfte1loglv /dev/mapper/ClusterDatavg-uzmfte1loglv
