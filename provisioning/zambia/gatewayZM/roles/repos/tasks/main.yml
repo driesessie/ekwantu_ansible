@@ -1,2 +1,19 @@
 ---
-# tasks file for repos
+- name: fixing repos
+  copy:
+    src: ../templates/rhelrepo.j2
+    dest: /etc/yum.repos.d/rhel.repo
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: install packages.
+  yum: 
+    name: 
+      - telnet 
+      - libstdc++-devel
+      - xorg-x11-server-Xorg
+      - xorg-x11-xauth
+      - xorg-x11-apps
+      - xdpyinfo
+  
