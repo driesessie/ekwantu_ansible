@@ -1,2 +1,67 @@
 ---
-# tasks file for users
+- name: Create user mqm.
+  user:
+    name: mqm
+    state: present
+    password: 123mqservice987
+    comment: mqm user
+    uid: 206
+    group: mqbrkrs
+
+- name: Create user wbrkadm.
+  user:
+    name: wbrkadm
+    state: present
+    password: 123wbrkadm987
+    comment: wbrkadm user
+    uid: 19997
+    group: mqbrkrs
+
+- name: Create user fteagent.
+  user:
+    name: fteagent
+    state: present
+    password: zaq12wsx
+    comment: esbcom user
+    uid: 19950
+    group: esbcom
+
+- name: Create user mqops.
+  user:
+    name: mqops
+    state: present
+    shell: /bin/nologin
+    uid: 30991 
+    
+- name: Create user mqusr.
+  user:
+    name: mqusr
+    state: present
+    shell: /bin/nologin
+    uid: 30992
+
+- name: Create user wbrkops.
+  user:
+    name: wbrkops
+    state: present
+    shell: /bin/nologin
+    uid: 30994
+
+- name: Create user wbrkusr.
+  user:
+    name: wbrkusr
+    state: present
+    shell: /bin/nologin
+    uid: 30995 
+    
+- name: Create user fteusr.
+  user:
+    name: fteusr
+    state: present
+    uid: 34000 
+
+- name: Create user iibadm.
+  user:
+    name: iibadm
+    state: present
+    uid: 144
