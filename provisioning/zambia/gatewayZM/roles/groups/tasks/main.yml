@@ -10,7 +10,20 @@
     state: present
     gid: 19998
 
-- name: Ensure group "somegroup" exists
+- name: Ensure group "iibadm" exists with correct gid
   ansible.builtin.group:
-    name: somegroup
+    name: iibadm
     state: present
+    gid: 144
+
+- name: Ensure group "fteagent" exists with correct gid
+  ansible.builtin.group:
+    name: iibadm
+    state: present
+    gid: 19993
+
+- name: Ensure group "mqm" exists with correct gid
+  ansible.builtin.group:
+    name: mqm
+    state: present
+    gid: 206

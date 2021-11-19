@@ -22,3 +22,11 @@
       'gpgcheck=0'
       'enabled=1'
       '#End Ansible managed block'
+
+- name: Installing packages.
+  yum: 
+    name: 
+      - pcs
+      - pacemaker
+      - fence-agents-all
+  state: present

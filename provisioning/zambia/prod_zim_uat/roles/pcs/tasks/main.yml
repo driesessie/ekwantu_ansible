@@ -19,10 +19,10 @@
   debug: 
     msg: enablecluster
 
-- name: create constraints
-  ansible.builtin.shell: |
-    - pcs constraint order start uzmgwyw-dlm-clone then uzmgwyw-clvmd-clone
-    - pcs constraint colocation add uzmgwyw-clvmd-clone with uzmgwyw-dlm-clone
+# - name: create constraints
+#   ansible.builtin.shell: |
+#     - pcs constraint order start uzmgwyw-dlm-clone then uzmgwyw-clvmd-clone
+#     - pcs constraint colocation add uzmgwyw-clvmd-clone with uzmgwyw-dlm-clone
 
 - name: set property
   ansible.builtin.shell: 
@@ -38,3 +38,33 @@
 
   debug:
     mesg: statuslvmetad
+
+- name: Setting up Cluster auth
+  command:
+    - pcs cluster auth UZMGWYW1.zm.sbicdirectory.com UZMGWYW2.zm.sbicdirectory.com
+
+- name: Start the cluster.
+  command:
+    - pcs cluster setup --start --name gpfscluster UZMGWYW1.zm.sbicdirectory.com  UZMGWYW2.zm.sbicdirectory.com
+
+- name: Enable the cluster.
+  command: 
+     - pcs cluster enable --all
+
+- name: checking cluster status
+  register: cluster_status
+  command: 
+    - pcs cluster status
+
+- name: displaying cluster status.
+  debug:
+    msg: cluster_status
+
+- name: Checking pcs status.
+  register: pcs_status
+  command:
+    - pcs status
+
+- name: Displaying pcs status.
+  debug:
+    msg: pcs_status
