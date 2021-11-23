@@ -9,10 +9,10 @@
   shell: systemctl status pcsd.service
 
 - name: Setup cluster auth.
-  shell: pcs cluster auth UZMGWYW1.zm.sbicdirectory.com UZMGWYW2.zm.sbicdirectory.com
+  shell: pcs cluster auth "{{ node1 }}"."{{ fqdn }}" "{{ node2 }}"."{{ fqdn }}"
 
 - name: Start the Cluster.
-  status: pcs cluster setup --start --name gpfscluster UZMGWYW1.zm.sbicdirectory.com  UZMGWYW2.zm.sbicdirectory.com
+  status: pcs cluster setup --start --name gpfscluster "{{ node1 }}"."{{ fqdn }}"  "{{ node2 }}"."{{ fqdn }}"
 
 - name: Check cluster status.
   shell: pcs cluster enable --all

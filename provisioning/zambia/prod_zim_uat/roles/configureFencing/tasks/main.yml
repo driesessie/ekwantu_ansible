@@ -3,10 +3,10 @@
   shell: |
     - "fence_vmware_rest -a prdbwvc01v.bw.sbicdirectory.com -l fenceuser@vsphere.local -p P@ssw0rd -z --ssl-insecure -o list"
     - "fence_vmware_rest -a afrzamdrvc01v.zm.sbicdirectory.com -l fenceuser@vsphere.local -p ZambiaMQ@2021 -z --ssl-insecure -o list"
-    - "pcs stonith create uzmgwywfence fence_vmware_rest pcmk_host_map="UZMGWYW1.zm.sbicdirectory.com:zamcibuat01;UZMGWYW2.zm.sbicdirectory.com:zamcibuat02" ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" \
+    - "pcs stonith create uzmgwywfence fence_vmware_rest pcmk_host_map="{{ node1 }}"."{{ fqdn }}":"{{ vsphere_host1 }}";"{{ node2 }}"."{{ fqdn }}":"{{ vsphere_host2 }}" ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" \
          login="fenceuser@vsphere.local" passwd="ZambiaMQ@2021" ssl_insecure=1  pcmk_monitor_timeout=60s"
     
-- name: Checking the pcs stonith show pbwgwywfence output.
+- name: Checking the pcs stonith show "{{ fence_name }}" output.
   register: show_host
   shell: "pcs stonith show pbwgwywfence"
 

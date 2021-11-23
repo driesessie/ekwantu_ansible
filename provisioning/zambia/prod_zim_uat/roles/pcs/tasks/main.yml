@@ -17,7 +17,7 @@
     - pcs resource create uzmgwyw-clvmd ocf:heartbeat:clvm op monitor interval=30s on-fail=fence clone interleave=true ordered=true
 
   debug: 
-    msg: enablecluster
+    msg: "The status is {{ enablecluster }}"
 
 # - name: create constraints
 #   ansible.builtin.shell: |
@@ -37,7 +37,7 @@
     - status lvm2-lvmetad
 
   debug:
-    mesg: statuslvmetad
+    mesg: "The status is {{ statuslvmetad }}"
 
 - name: Setting up Cluster auth
   command:
@@ -58,7 +58,7 @@
 
 - name: displaying cluster status.
   debug:
-    msg: cluster_status
+    msg: "The cluster status is {{ cluster_status }}"
 
 - name: Checking pcs status.
   register: pcs_status
@@ -67,13 +67,13 @@
 
 - name: Displaying pcs status.
   debug:
-    msg: pcs_status
+    msg: "pcs status is {{ pcs_status }}"
 
 - name: Configure fencing.
   command:
-    - 'fence_vmware_rest -a prdbwvc01v.bw.sbicdirectory.com -l fenceuser@vsphere.local -p P@ssw0rd -z --ssl-insecure -o list'
-    - 'fence_vmware_rest -a afrzamdrvc01v.zm.sbicdirectory.com -l fenceuser@vsphere.local -p ZambiaMQ@2021 -z --ssl-insecure -o list'
-    - 'pcs stonith create uzmgwywfence fence_vmware_rest pcmk_host_map="UZMGWYW1.zm.sbicdirectory.com:zamcibuat01;UZMGWYW2.zm.sbicdirectory.com:zamcibuat02" ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" login="fenceuser@vsphere.local" passwd="ZambiaMQ@2021" ssl_insecure=1  pcmk_monitor_timeout=60s'
+    - 'fence_vmware_rest -a {{ vsphere_host }}.{{ fqdn }} -l fenceuser@vsphere.local -p P@ssw0rd -z --ssl-insecure -o list'
+    - 'fence_vmware_rest -a {{ vsphere_host }}.{{ fqdn }} -l fenceuser@vsphere.local -p ZambiaMQ@2021 -z --ssl-insecure -o list'
+    - 'pcs stonith create {{ fence_name }} fence_vmware_rest pcmk_host_map="{{ node1 }}.{{ fqdn }}:zamcibuat01;{{ node2 }}.{{ fqdn }}:zamcibuat02" ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" login="fenceuser@vsphere.local" passwd="ZambiaMQ@2021" ssl_insecure=1  pcmk_monitor_timeout=60s'
 
 - name : Get show Stonith.
   register: pcs_stonith_show
@@ -82,7 +82,7 @@
 
 - name: Show stonith show results.
   debug:
-    msg: pcs_stonith_show
+    msg: "The output of pcs status show is {{ pcs_stonith_show }}"
 
 - name: Get stonith show full
   register: stonith_show_full
@@ -91,7 +91,7 @@
 
 - name: Show get stonith full results.
   debug:
-    msg: stonith_show_full
+    msg: "Stonith show all is {{ stonith_show_full }}"
 
 - name: Get stonith show results.
   register: stonith_show

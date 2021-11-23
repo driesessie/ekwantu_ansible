@@ -37,15 +37,13 @@
       filesystem:
             fstype: gfs
             dev: /dev/mapper/ClusterDatavg-" {{ items }}"
-
-
-    - with_items:
-        - ubwgwyw1datalv
-        - ubwgwyw2datalv
-        - ubwgwyw1loglv
-        - ubwgwyw2loglv
-        - ubwfte1datalv
-        - ubwfte1loglv
+      with_items:
+         - ubwgwyw1datalv
+         - ubwgwyw2datalv
+         - ubwgwyw1loglv
+         - ubwgwyw2loglv
+         - ubwfte1datalv
+         - ubwfte1loglv
     
     # - name: mount logical volume
     #   mount:

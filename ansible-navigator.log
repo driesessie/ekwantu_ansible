@@ -1,0 +1,21 @@
+211122141155.291 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+211122141155.363 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+211122141155.363 ERROR 'ansible_navigator.image_manager.puller._log_message' 
+211122142625.093 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+211122142625.180 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+211122142625.181 ERROR 'ansible_navigator.image_manager.puller._log_message' 
+211122142701.390 WARNING 'ansible_navigator.image_manager.puller._log_message' Image inspection failed, image assumed to be corrupted or missing
+211122142722.281 ERROR 'ansible_navigator.image_manager.puller._log_message' Execution environment pull failed
+211122142722.281 ERROR 'ansible_navigator.image_manager.puller._log_message' Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/images/create?fromImage=quay.io%2Fansible%2Fansible-navigator-demo-ee&tag=0.6.0": dial unix /var/run/docker.sock: connect: permission denied
+211122142946.306 ERROR 'ansible_navigator.actions.collections._parse' /usr/share/ansible/collections/ansible_collections/ovirt/ovirt/plugins/test/ovirt_proxied_check.py AttributeError (get_docstring): 'AnsibleUnicode' object has no attribute 'get'
+211122143224.585 WARNING 'ansible_navigator.actions.doc._update_args' Configuration errors encountered, rolling back to previous configuration.
+211122143224.585 WARNING 'ansible_navigator.actions.doc._update_args' Command provided: 'doc'
+211122143224.585 WARNING 'ansible_navigator.actions.doc._update_args' A plugin name is required when using the doc subcommand
+211122143255.115 ERROR 'ansible_navigator.actions.doc._run_runner' Error occurred while fetching doc for plugin awx:awx: '[WARNING]: module awx:awx not found in: /home/dries/ansible/library:/home/runne
+r/.ansible/plugins/modules:/usr/share/ansible/plugins/modules:/usr/local/lib/py
+thon3.8/site-packages/ansible/modules
+'
+211122143325.671 ERROR 'ansible_navigator.actions.doc._run_runner' Error occurred while fetching doc for plugin ovirt.ovirt: '[WARNING]: module ovirt.ovirt not found in: /home/dries/ansible/library:/home/r
+unner/.ansible/plugins/modules:/usr/share/ansible/plugins/modules:/usr/local/li
+b/python3.8/site-packages/ansible/modules
+'
