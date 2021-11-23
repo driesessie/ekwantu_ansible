@@ -73,7 +73,8 @@
   command:
     - 'fence_vmware_rest -a {{ vsphere_host }}.{{ fqdn }} -l fenceuser@vsphere.local -p P@ssw0rd -z --ssl-insecure -o list'
     - 'fence_vmware_rest -a {{ vsphere_host }}.{{ fqdn }} -l fenceuser@vsphere.local -p ZambiaMQ@2021 -z --ssl-insecure -o list'
-    - 'pcs stonith create {{ fence_name }} fence_vmware_rest pcmk_host_map="{{ node1 }}.{{ fqdn }}:zamcibuat01;{{ node2 }}.{{ fqdn }}:zamcibuat02" ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" login="fenceuser@vsphere.local" passwd="ZambiaMQ@2021" ssl_insecure=1  pcmk_monitor_timeout=60s'
+    - 'pcs stonith create {{ fence_name }} fence_vmware_rest pcmk_host_map="{{ node1 }}.{{ fqdn }}:"{{ vsphere_host1: }}";{{ node2 }}.{{ fqdn }}:"{{ vsphere_host2 }}" \
+       ipaddr="afrzamdrvc01v.zm.sbicdirectory.com" login="fenceuser@vsphere.local" passwd="ZambiaMQ@2021" ssl_insecure=1  pcmk_monitor_timeout=60s'
 
 - name : Get show Stonith.
   register: pcs_stonith_show

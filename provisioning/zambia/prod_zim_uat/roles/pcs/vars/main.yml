@@ -6,4 +6,5 @@ vsphere_host: prdbwvc01v
 fence_name: pbwgwywfence
 vsphere_host1: zamcibuat01
 vsphere_host2: zamcibuat02
+vg_name: ClusterDatavg
 
