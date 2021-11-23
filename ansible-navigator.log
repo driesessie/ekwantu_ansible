@@ -19,3 +19,4 @@ thon3.8/site-packages/ansible/modules
 unner/.ansible/plugins/modules:/usr/share/ansible/plugins/modules:/usr/local/li
 b/python3.8/site-packages/ansible/modules
 '
+211123132014.384 ERROR 'ansible_navigator.actions.collections._parse' /usr/share/ansible/collections/ansible_collections/ovirt/ovirt/plugins/test/ovirt_proxied_check.py AttributeError (get_docstring): 'AnsibleUnicode' object has no attribute 'get'

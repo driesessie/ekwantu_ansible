@@ -39,7 +39,7 @@
 
 - name: Create a Logical volume uzmfte1datalv.
   community.general.lvol:
-    vg: ClusterDatavg
+    vg: "{{ vg_name }}"
     lv: uzmfte1datalv
     size: 30G
 

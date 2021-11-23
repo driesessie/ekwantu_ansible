@@ -1,0 +1,18 @@
+---
+- hosts: all
+  remote_user: ansible
+  become: true
+  become_method: sudo
+  ignore_errors: yes
+  serial: 10
+  vars_file:
+    - vars.yml
+# Add the roles here
+  roles:
+    - repos
+    - packages
+    - clusterinstall
+    - configureFencing
+    - pcs
+#Run global tasks here 
+  tasks:

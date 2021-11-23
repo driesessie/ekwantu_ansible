@@ -1,12 +1,6 @@
 ---
 - name: Update the redhat repos
-  blockinfile:
-  dest: /etc/yum.repos.d/rhel.repo
-  block: |
-    '#Begin Ansible Managed block'
-    '[rhel]'
-    'name=rhel'
-    'baseurl=file:///mnt'
-    'gpgcheck=0'
-    'enabled=1'
-    '#End Ansible block'
+  copy:
+    src: "../templates/rhel.j2"
+    dest: /etc/yum.repos.d/rhel.repo
+  
