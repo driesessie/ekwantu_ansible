@@ -2,3 +2,4 @@ share/
 logs/
 *.log
 .vscode
+ansible/
