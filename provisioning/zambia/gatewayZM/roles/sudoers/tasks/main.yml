@@ -1,0 +1,9 @@
+---
+
+- name: Setup sudoers
+  copy:
+    src: ../templates/sudoers.j2
+    dst: /etc/sudoers.d/mq
+    owner: root
+    group: root
+    mode: '0644'
