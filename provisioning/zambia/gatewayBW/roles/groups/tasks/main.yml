@@ -10,3 +10,4 @@
     state: present
     gid: 19998
 
+  tags: create_groups

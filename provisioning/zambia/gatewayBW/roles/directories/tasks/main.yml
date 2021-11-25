@@ -13,5 +13,6 @@
       - '/gpfsgwy/pbwfte1/mq/log'
       - '/gpfsgwy/pbwgwy1/mq/log'
       - '/gpfsgwy/pbwgwy2/mq/log'
-
+ 
+    tags: create_directories
 

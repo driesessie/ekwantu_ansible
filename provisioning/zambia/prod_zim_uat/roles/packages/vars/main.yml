@@ -5,5 +5,8 @@ packages:
   - fence-agents-all
   - gfs2
   - lvm
+  - pcs
+  - pacemaker
+  - fence-agents-all
 
 # vars file for packages

@@ -1,14 +1,15 @@
 ---
-- name: Provisioning GatewayBW
-  hosts: all
-  remote_user: root
+- hosts: all
+  remote_user: dries
+  gather_facts: true 
   become: true
+  become_method: sudo
   roles:
     - repos
-    - packages
+    # - packages
     - groups
     - users
     - sudoers
     - limits
-    - makedirectories
+    
     

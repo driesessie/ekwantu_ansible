@@ -44,6 +44,8 @@
          - ubwgwyw2loglv
          - ubwfte1datalv
          - ubwfte1loglv
+
+      tags: create_logical_volumes
     
     # - name: mount logical volume
     #   mount:

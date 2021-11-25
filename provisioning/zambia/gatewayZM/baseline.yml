@@ -1,14 +1,13 @@
+---
 - hosts: all
-  remote_user: root
-  become: yes 
-  become_method: sudoers
-  sereial: 10
-  vars_file:
-    - vars.yml
+  remote_user: dries 
+  become: yes
+  become_method: sudo
+  serial: 10
 
   roles:
     - repos
-    - packages
+    #- packages
     - groups
     - users
     - sudoers

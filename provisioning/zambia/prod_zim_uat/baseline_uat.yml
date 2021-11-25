@@ -1,12 +1,11 @@
 ---
 - hosts: all
-  remote_user: ansible
+  remote_user: dries 
   become: true
   become_method: sudo
+  become_user: root
   ignore_errors: yes
   serial: 10
-  vars_file:
-    - vars.yml
 # Add the roles here
   roles:
     - repos
