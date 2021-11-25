@@ -3,12 +3,6 @@
   yum:
     name: "{{ packages }}"
     state: present
-  vars:
-    packages:
-      pcs 
-      pacemaker
-      fence-agents-all
-      gfs2
-      lvm
-
+    
+  
   

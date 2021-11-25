@@ -1,14 +1,16 @@
----
-- name: Provisioning GatewayBW
-  hosts: all
+- hosts: all
   remote_user: root
-  become: true
+  become: yes 
+  become_method: sudoers
+  sereial: 10
+  vars_file:
+    - vars.yml
+
   roles:
     - repos
     - packages
     - groups
     - users
     - sudoers
-    - limits
     - makedirectories
-    
+    - limits

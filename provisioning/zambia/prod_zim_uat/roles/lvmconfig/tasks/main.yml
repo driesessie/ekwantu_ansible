@@ -16,7 +16,7 @@
   pvs: /dev/sdb 
 
 
-- name: Create a Logical volume uzmgwyw1datalv.
+- name: Create a Logical volume "{{ node1 }}"datalv.
   community.general.lvol:
     vg: "{{ vgname }}"
     lv: "{{ lvname[0] }}"
@@ -66,13 +66,13 @@
 - name: Create resources.
   ansible.builtin.shell: '{{ item }}'
   loop:
-    - pcs resource create uzmgwyw1dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmgwyw1datalv" \
+    - pcs resource create "{{ node1 }}"dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[0] }}" \
         directory="/gpfsgwy/uzmgwy1/mq/data" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmgwyw2dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[1] }}"" \
+    - pcs resource create "{{ node2 }}"dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[1] }}"" \
         directory="/gpfsgwy/uzmgwy2/mq/data" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmgwyw1logclusterfs Filesystem device="/dev/"{{ vg_name }}"/" {{ lvname[2] }}"" \
+    - pcs resource create "{{ node1 }}"logclusterfs Filesystem device="/dev/"{{ vg_name }}"/" {{ lvname[2] }}"" \
         directory="/gpfsgwy/uzmgwy1/mq/log" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmgwyw2logclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[3] }}"" \
+    - pcs resource create "{{ node2 }}"logclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[3] }}"" \
         directory="/gpfsgwy/uzmgwy2/mq/log" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
     - pcs resource create uzmfte1dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[4] }}"" \
         directory="/gpfsgwy/uzmfte1/mq/data" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true

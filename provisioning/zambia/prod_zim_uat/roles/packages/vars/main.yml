@@ -1,2 +1,9 @@
 ---
+packages:
+  - pcs 
+  - pacemaker
+  - fence-agents-all
+  - gfs2
+  - lvm
+
 # vars file for packages

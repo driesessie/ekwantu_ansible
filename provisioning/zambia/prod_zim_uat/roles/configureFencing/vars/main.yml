@@ -1,2 +1,5 @@
 ---
-# vars file for configureFencing
+node1: UZMGWYW1
+node2: UZMGWYW2
+fqdn: zm.sbicdirectory.com
+fence-name: pbwgwywfence

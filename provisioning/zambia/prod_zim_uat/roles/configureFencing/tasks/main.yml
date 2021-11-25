@@ -10,7 +10,7 @@
     
 - name: Checking the pcs stonith show "{{ fence_name }}" output.
   register: show_host
-  shell: "pcs stonith show pbwgwywfence"
+  shell: 'pcs stonith show "{{ fence-name }}"'
 
 - name: Print the status of stonith show host.
   debug:

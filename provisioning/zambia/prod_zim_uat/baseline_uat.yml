@@ -15,4 +15,3 @@
     - configureFencing
     - pcs
 #Run global tasks here 
-  tasks:

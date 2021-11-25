@@ -16,4 +16,6 @@
       - xorg-x11-xauth
       - xorg-x11-apps
       - xdpyinfo
+
+    state: present
   
