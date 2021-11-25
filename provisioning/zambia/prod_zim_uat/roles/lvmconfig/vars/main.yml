@@ -1,2 +1,11 @@
 ---
+
 # vars file for lvmconfig
+vgname: ClusterDatavg
+lvname: 
+  - uzmgwyw1datalv
+  - uzmgwyw2datalv
+  - uzmgwyw1loglv
+  - uzmgwyw2loglv
+  - uzmfte1datalv
+  - uzmfte1loglv

@@ -7,57 +7,60 @@
   tags:
     - lvmconfig
 
+  vars_files:
+    - vars/main.yml
+
 - name: Create physical volume
   community.general.lvg:
-  vg: ClusterDatavg
+  vg: "{{ vgname }}"
   pvs: /dev/sdb 
 
 
 - name: Create a Logical volume uzmgwyw1datalv.
   community.general.lvol:
-    vg: ClusterDatavg
-    lv: uzmgwyw1datalv
+    vg: "{{ vgname }}"
+    lv: "{{ lvname[0] }}"
     size: 30G
-
-- name: Create a Logical volume uzmgwyw2datalv.
+  
+- name: Create a Logical volume "{{ lvname[1] }}".
   community.general.lvol:
-    vg: ClusterDatavg
-    lv: uzmgwyw2datalv
+    vg: "{{ vgname }}"
+    lv: "{{ lvname[1] }}"
     size: 30G
 
-- name: Create a Logical volume uzmgwyw1loglv.
+- name: Create a Logical volume " {{ lvname[2] }}".
   community.general.lvol:
-    vg: ClusterDatavg
-    lv: uzmgwyw1loglv
+    vg: "{{ vgname }}"
+    lv: "{{ lvname[2] }}"
     size: 30G
 
-- name: Create a Logical volume uzmgwyw2loglv.
+- name: Create a Logical volume "{{ lvname[3] }}".
   community.general.lvol:
-    vg: ClusterDatavg
-    lv: uzmgwyw2loglv
+    vg: "{{ vgname }}"
+    lv: "{{ lvname[3] }}"
     size: 30G
 
-- name: Create a Logical volume uzmfte1datalv.
+- name: Create a Logical volume "{{ lvname[4] }}".
   community.general.lvol:
     vg: "{{ vg_name }}"
-    lv: uzmfte1datalv
+    lv: "{{ lvname[4] }}"
     size: 30G
 
-- name: Create a Logical volume uzmfte1loglv.
+- name: Create a Logical volume "{{ lvname[5] }}".
   community.general.lvol:
-    vg: ClusterDatavg
-    lv: uzmfte1loglv
+    vg: "{{ vg_name }}"
+    lv: "{{ lvname[5] }}"
     size: 30G
 
 - name: Formatting the created logical volumes.
   ansible.builtin.shell: '{{ item }}'
   loop:
-    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw1datalv /dev/mapper/ClusterDatavg-uzmgwyw1datalv
-    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw2datalv /dev/mapper/ClusterDatavg-uzmgwyw2datalv
-    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw1loglv /dev/mapper/ClusterDatavg-uzmgwyw1loglv
-    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmgwyw2loglv /dev/mapper/ClusterDatavg-uzmgwyw2loglv
-    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmfte1datalv /dev/mapper/ClusterDatavg-uzmfte1datalv
-    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:uzmfte1loglv /dev/mapper/ClusterDatavg-uzmfte1loglv
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:"{{ lvname[0] }}" /dev/mapper/"{{ vgname }}"-"{{ lvname[0] }}"
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:"{{ lvname[1] }}" /dev/mapper/"{{ vgname }}"-"{{ lvname[1] }}"
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:" {{ lvname[2] }}" /dev/mapper/"{{ vgname }}"-" {{ lvname[2] }}"
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:"{{ lvname[3] }}" /dev/mapper/"{{ vgname }}"-"{{ lvname[3] }}"
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:"{{ lvname[4] }}" /dev/mapper/"{{ vgname }}"-"{{ lvname[4] }}"
+    - mkfs.gfs2 -j2 -p lock_dlm -t gpfscluster:"{{ lvname[5] }}" /dev/mapper/"{{ vgname }}"-"{{ lvname[5] }}"
 
 
 - name: Create resources.
@@ -65,15 +68,15 @@
   loop:
     - pcs resource create uzmgwyw1dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmgwyw1datalv" \
         directory="/gpfsgwy/uzmgwy1/mq/data" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmgwyw2dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmgwyw2datalv" \
+    - pcs resource create uzmgwyw2dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[1] }}"" \
         directory="/gpfsgwy/uzmgwy2/mq/data" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmgwyw1logclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmgwyw1loglv" \
+    - pcs resource create uzmgwyw1logclusterfs Filesystem device="/dev/"{{ vg_name }}"/" {{ lvname[2] }}"" \
         directory="/gpfsgwy/uzmgwy1/mq/log" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmgwyw2logclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmgwyw2loglv" \
+    - pcs resource create uzmgwyw2logclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[3] }}"" \
         directory="/gpfsgwy/uzmgwy2/mq/log" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmfte1dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmfte1datalv" \
+    - pcs resource create uzmfte1dataclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[4] }}"" \
         directory="/gpfsgwy/uzmfte1/mq/data" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
-    - pcs resource create uzmfte1logclusterfs Filesystem device="/dev/"{{ vg_name }}"/uzmfte1loglv" \
+    - pcs resource create uzmfte1logclusterfs Filesystem device="/dev/"{{ vg_name }}"/"{{ lvname[5] }}"" \
         directory="/gpfsgwy/uzmfte1/mq/log" fstype="gfs2" "options=noatime" op monitor interval=10s on-fail=fence clone interleave=true
         
 

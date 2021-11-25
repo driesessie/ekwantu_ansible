@@ -1,0 +1,17 @@
+---
+
+- name: Create the directories.
+  file:
+    path: '{{ item }}'
+    state: directory
+    owner: mqm
+    group: mqm
+    mode: 0755
+    loop:
+      - /gpfsgwy/pzmgwy1/mq/data
+      - /gpfsgwy/pzmgwy2/mq/data
+      - /gpfsgwy/pzmfte1/mq/data
+      - /gpfsgwy/pzmfte1/mq/log 
+      - /gpfsgwy/pzmgwy1/mq/log
+      - /gpfsgwy/pzmgwy1/mq/log
+
