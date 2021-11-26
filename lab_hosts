@@ -1,0 +1,13 @@
+[clusters]
+cluster2  
+cluster1 
+
+[gitrepo]
+gitrepo
+
+[all]
+
+cluster2
+cluster1
+gitrepo
+

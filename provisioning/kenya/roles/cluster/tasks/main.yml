@@ -1,0 +1,21 @@
+---
+
+- name: check the status of the cluster.
+  ansible.builtin.shell:
+  register: pcs_status
+  command:
+    - pcs status
+
+  debug:
+    msg:
+      - pcs_status
+
+- name: Check the pcs config
+  ansible.builtin.shell:
+  register: pcs_config
+  command:
+    - pcs config
+
+  debug:
+    msg:
+      - pcs_config
