@@ -7,6 +7,11 @@
     line: rsi  6889/tcp
     create: yes
 
+    handlers:
+      name: restart xinetd
+      service: xinetd
+      state: restarted
+
 - name: Copy rsi entry to xinetd
   copy:
     src: ../templates/rsi.j2
@@ -14,3 +19,5 @@
     owner: root
     group: root
     mode: 644
+  notify: 
+    - restart xinetd

@@ -22,6 +22,8 @@
     - strace
     - telnet
     - glibc.i686
+    - mksh
+
 
 - name: get the output from the install.
   debug:
