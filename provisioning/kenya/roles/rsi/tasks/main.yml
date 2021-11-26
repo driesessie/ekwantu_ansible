@@ -1,0 +1,16 @@
+---
+
+- name: add entry in the services file.
+  lineinfile:
+    path: /etc/services
+    insertafter: '^# Local services'
+    line: rsi  6889/tcp
+    create: yes
+
+- name: Copy rsi entry to xinetd
+  copy:
+    src: ../templates/rsi.j2
+    dest: /etc/xinetd.d/rsi
+    owner: root
+    group: root
+    mode: 644

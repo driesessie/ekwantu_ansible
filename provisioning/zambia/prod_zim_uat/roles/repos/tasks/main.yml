@@ -2,16 +2,16 @@
 - name: Update the HA repo.
   ansible.builtin.copy:
     src: ../templates/HArepo.j2
-    dst: /etc/yum.repos.d/HA.repo
+    dest: /etc/yum.repos.d/HA.repo
     owner: root
     group: root
-    mode: 644
+    mode: 0644
 
 
 - name: Update the RE repo.
   ansible.builtin.copy:
     src: ../templates/RErepo.j2
-    dst: /etc/yum.repos.d/RE.repo
+    dest: /etc/yum.repos.d/RE.repo
     owner: root
     group: root
-    mode: 644
+    mode: 0644

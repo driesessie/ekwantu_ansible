@@ -1,0 +1,14 @@
+---
+
+- name: set the ipv4 keep alive.
+  ansible.posix.sysctl:
+    name: "{{ item  }}"
+    state: present
+    sysctl_set: yes
+    reload: yes
+ loop:
+   - net.ipv4.tcp_keepalive_intvl = 60
+   - net.ipv4.tcp_keepalive_probes = 2
+   - net.ipv4.tcp_keepalive_time = 120
+
+

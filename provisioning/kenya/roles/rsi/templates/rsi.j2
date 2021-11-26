@@ -1,0 +1,10 @@
+# description: CR2 Remote System Interface service rsi 
+{ 
+        socket_type = stream
+        wait       = no
+        user       = spausr
+        server      = /sparrow/LS/SIT/sparrow8/shells/rsistart.sh
+        server_args  = /sparrow/LS/SIT/sparrow8 
+        disable     = no
+}
+

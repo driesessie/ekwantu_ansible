@@ -1,0 +1,28 @@
+---
+
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: present
+    register: yum_install
+  loop:
+    - bc
+	- ksh
+    - fuser
+    - sysstat
+    - gzip
+    - bzip2
+    - net-tools
+    - gpm-libs
+    - ncompress
+    - pam.i686
+    - xxd
+    - unix2dos
+    - dos2unix
+    - strace
+    - telnet
+    - glibc.i686
+
+- name: get the output from the install.
+  debug:
+    msg: yum_install

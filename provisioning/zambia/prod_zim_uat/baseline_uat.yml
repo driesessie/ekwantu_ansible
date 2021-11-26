@@ -1,14 +1,14 @@
 ---
 - hosts: all
   remote_user: dries 
-  become: true
+  become: yes 
   become_method: sudo
   become_user: root
   ignore_errors: yes
   serial: 10
 # Add the roles here
   roles:
-    - repos
+    #   - repos
     - packages
     - clusterinstall
     - configureFencing
