@@ -1,0 +1,106 @@
+---
+
+- name: Ensure group ubwilink exists
+  ansible.builtin.group:
+    name: ubwilink
+    state: present
+    gid: 1005
+    register: ubwilink
+
+    debug:
+      msg:
+        - ubwilink
+
+- name: Ensure group esbcom exists.
+  ansible.builtin.group:
+    name:  esbcom
+    state: present
+    gid: 1004
+    register: esbcom
+
+    debug:
+      msg:
+        - esbcom
+
+- name: Ensure user ubwspwusr exist with the correct values.
+  ansible.builtin.user:
+    name: ubwspwusr
+    comment: Sparrow Application Service Account
+    groups: esbcom
+    home: /sparrow/BW/UAT/sparrow8
+    shell: /bin/ksh
+    register: ubwspwusr
+
+    debug:
+      msg: 
+        - ubwspwusr
+
+- name: Ensure user ubwspwops exist with the correct values.
+  ansible.builtin.user:
+    name: ubwspwops
+    comment: Sparrow Application Operations Team Account
+    home: /sparrow/BW/UAT/sparrow8
+    shell: /bin/ksh
+    register: ubwspwops
+
+    debug:
+      msg:
+        - ubwspwops
+
+- name: Ensure user ubwspwmgr exist with the correct values.
+  ansible.builtin.user:
+    name: ubwspwmgr
+    comment: Sparrow Application Manager Account 
+    home: /sparrow/BW/UAT/sparrow8
+    shell: /bin/ksh
+    register: ubwspwmgr 
+
+    debug:
+      msg:
+        - ubwspwmgr
+
+- name: Ensure user ubwbinusr exist with the correct values.
+  ansible.builtin.user:
+    name: ubwbinusr 
+    comment: Sparrow Application SA BIN Team Account 
+    home: /sparrow/BW/UAT/sparrow8
+    shell: /bin/ksh
+    register: ubwbinusr 
+
+    debug:
+      msg:
+        - ubwbinusr 
+
+- name: Ensure user mqm exist with the correct values.
+  ansible.builtin.user:
+    name: mqm
+    comment:  MQM User
+    shell: /bin/ksh
+    register: mqm 
+
+    debug:
+      msg:
+        - mqm 
+
+- name: Ensure user  fteadm exist with the correct values.
+  ansible.builtin.user:
+    name: fteadm 
+    comment: WMQ FTE Admin User 
+    shell: /bin/ksh
+    register: fteadm 
+
+    debug:
+      msg:
+        - fteadm 
+
+- name: Ensure user  fteagent exist with the correct values.
+  ansible.builtin.user:
+    name: fteagent 
+    comment: FTE Agent User 
+    shell: /bin/ksh
+    register: fteagent 
+
+    debug:
+      msg:
+        - fteagent 
+
