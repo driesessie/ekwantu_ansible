@@ -3,19 +3,17 @@
 - name: check the status of the cluster.
   ansible.builtin.shell:
   register: pcs_status
-  command:
+  cmd:
     - pcs status
 
   debug:
-    msg:
-      - pcs_status
+    msg: "pcs status is {{ pcs_status.stdout }}"
 
 - name: Check the pcs config
   ansible.builtin.shell:
   register: pcs_config
-  command:
+  cmd:
     - pcs config
 
   debug:
-    msg:
-      - pcs_config
+    msg: "PCS config is {{ pcs_config.stdout }}"

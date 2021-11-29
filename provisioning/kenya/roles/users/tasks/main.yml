@@ -5,35 +5,36 @@
     name: ubwilink
     state: present
     gid: 1005
-    register: ubwilink
+    # register: ubwilink
 
-    debug:
-      msg:
-        - ubwilink
+    # debug:
+    #   msg:
+    #     - ubwilink
 
 - name: Ensure group esbcom exists.
   ansible.builtin.group:
     name:  esbcom
     state: present
     gid: 1004
-    register: esbcom
+    # register: esbcom
 
-    debug:
-      msg:
-        - esbcom
+    # debug:
+    #   msg:
+    #     - esbcom
 
 - name: Ensure user ubwspwusr exist with the correct values.
   ansible.builtin.user:
     name: ubwspwusr
     comment: Sparrow Application Service Account
     groups: esbcom
+    append: yes
     home: /sparrow/BW/UAT/sparrow8
     shell: /bin/ksh
-    register: ubwspwusr
+    # register: ubwspwusr
 
-    debug:
-      msg: 
-        - ubwspwusr
+    # debug:
+    #   msg: 
+    #     - ubwspwusr
 
 - name: Ensure user ubwspwops exist with the correct values.
   ansible.builtin.user:
@@ -41,11 +42,11 @@
     comment: Sparrow Application Operations Team Account
     home: /sparrow/BW/UAT/sparrow8
     shell: /bin/ksh
-    register: ubwspwops
+    # register: ubwspwops
 
-    debug:
-      msg:
-        - ubwspwops
+    # debug:
+    #   msg:
+    #     - ubwspwops
 
 - name: Ensure user ubwspwmgr exist with the correct values.
   ansible.builtin.user:
@@ -53,11 +54,11 @@
     comment: Sparrow Application Manager Account 
     home: /sparrow/BW/UAT/sparrow8
     shell: /bin/ksh
-    register: ubwspwmgr 
+    # register: ubwspwmgr 
 
-    debug:
-      msg:
-        - ubwspwmgr
+    # debug:
+    #   msg:
+    #     - ubwspwmgr
 
 - name: Ensure user ubwbinusr exist with the correct values.
   ansible.builtin.user:
@@ -65,42 +66,42 @@
     comment: Sparrow Application SA BIN Team Account 
     home: /sparrow/BW/UAT/sparrow8
     shell: /bin/ksh
-    register: ubwbinusr 
+    # register: ubwbinusr 
 
-    debug:
-      msg:
-        - ubwbinusr 
+    # debug:
+    #   msg:
+    #     - ubwbinusr 
 
 - name: Ensure user mqm exist with the correct values.
   ansible.builtin.user:
     name: mqm
     comment:  MQM User
     shell: /bin/ksh
-    register: mqm 
+    # register: mqm 
 
-    debug:
-      msg:
-        - mqm 
+    # debug:
+    #   msg:
+    #     - mqm 
 
 - name: Ensure user  fteadm exist with the correct values.
   ansible.builtin.user:
     name: fteadm 
     comment: WMQ FTE Admin User 
     shell: /bin/ksh
-    register: fteadm 
+    # register: fteadm 
 
-    debug:
-      msg:
-        - fteadm 
+    # debug:
+    #   msg:
+    #     - fteadm 
 
 - name: Ensure user  fteagent exist with the correct values.
   ansible.builtin.user:
     name: fteagent 
     comment: FTE Agent User 
     shell: /bin/ksh
-    register: fteagent 
+    # register: fteagent 
 
-    debug:
-      msg:
-        - fteagent 
+    # debug:
+    #   msg:
+    #     - fteagent 
 

@@ -1,31 +1,31 @@
----
+# ---
 
-- debug: msg=msg="the value of limits.conf is {{ lookup('file', '/etc/security/limits.conf') }}"
+# - debug: msg="the value of limits.conf is {{ lookup('file', '/etc/security/limits.conf') }}"
 
-- name: display limits content
-  debug: var=item
-  with_file:
-    - "/etc/security/limits.conf"
+# - name: display limits content
+#   debug: var=item
+#   with_file:
+#     - "/etc/security/limits.conf"
 
-  tags: limitsconf
+#   tags: limitsconf
 
-- debug: msg="the value of service file is {{ lookup('file', '/etc/services') }}"
+#   debug: msg="the value of service file is {{ lookup('file', '/etc/services') }}"
 
-- name: display services config
-  debug: var=item
-  with_file:
-    - "/etc/services"
+# - name: display services config
+#   debug: var=item
+#   with_file:
+#     - "/etc/services"
 
-  tags: servicesconf
+#   tags: servicesconf
 
 
-- debug: msg="the value of xinetd/rsi file is {{ lookup('file', '/etc/xinetd.d/rsi') }}"
+#   debug: msg="the value of xinetd/rsi file is {{ lookup('file', '/etc/xinetd.d/rsi') }}"
 
-- name: display services config
-  debug: var=item
-  with_file:
-    - "/etc/xinetd.d/rsi"
+# - name: display services config
+#   debug: var=item
+#   with_file:
+#     - "/etc/xinetd.d/rsi"
 
-  tags: inetdrsi
+#   tags: inetdrsi
 
 

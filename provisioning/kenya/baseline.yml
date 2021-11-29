@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: dries
+  become: yes
+  become_method: sudo
+  become_user: root
+  ignore_errors: yes
+  serial: 10
+  roles:
+    - users
+    - packages
+    - softlinks
+    - rsi
+    - checks
