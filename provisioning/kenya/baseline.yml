@@ -9,6 +9,7 @@
   roles:
     - users
     - packages
-    - softlinks
+    # - softlinks
     - rsi
     - checks
+ 

@@ -1,31 +1,23 @@
-# ---
+---
 
-# - debug: msg="the value of limits.conf is {{ lookup('file', '/etc/security/limits.conf') }}"
+- name: display limits content.
+  shell: cat  /etc/security/limits.conf 
+  register: limitsconf
 
-# - name: display limits content
-#   debug: var=item
-#   with_file:
-#     - "/etc/security/limits.conf"
+- name: display limits config
+  debug:
+    msg: "{{ limitsconf.stdout }}"
+  
+  tags: servicesconf
 
-#   tags: limitsconf
+- name: check if the rsi config exists in xinted
+  shell: cat /etc/xinetd.d/rsi
+  register: rsiexist
 
-#   debug: msg="the value of service file is {{ lookup('file', '/etc/services') }}"
+- name: display existance if rsi config.
+  debug:
+    msg: "{{ rsiexist.stdout }}"
 
-# - name: display services config
-#   debug: var=item
-#   with_file:
-#     - "/etc/services"
-
-#   tags: servicesconf
-
-
-#   debug: msg="the value of xinetd/rsi file is {{ lookup('file', '/etc/xinetd.d/rsi') }}"
-
-# - name: display services config
-#   debug: var=item
-#   with_file:
-#     - "/etc/xinetd.d/rsi"
-
-#   tags: inetdrsi
+  tags: inetdrsi
 
 

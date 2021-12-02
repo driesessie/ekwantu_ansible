@@ -3,12 +3,13 @@
 - name: Install packages
   yum:
     name: "{{ item }}"
-    state: present
-    # register: yum_install
+    state: latest
+    # register: yuminstall
   loop:
     - bc
     - ksh
-    - fuser
+    # - fuser
+    - psmisc
     - sysstat
     - gzip
     - bzip2
@@ -23,8 +24,6 @@
     - telnet
     - glibc.i686
     - mksh
-
-
 # - name: get the output from the install.
 #   debug:
-#     msg: yum_install
+#     msg: "{{ yuminstall.stdout }}"

@@ -1,25 +1,24 @@
 ---
 
 - name: Create mksh symlink.
-  file:
-    src: /etc/alternatives/ksh
-    dest: /usr/bin/mksh
-    state: link
+  shell:
+    cmd: ln -s /usr/bin/ksh /usr/bin/mksh
+  
 
-- name: Create ksh-man symlink.
-  file:
-    src: /etc/alternatives/ksh-man
-    dest: /usr/share/man/man1/mksh.1.gz
-    state: link
+# - name: Create ksh-man symlink.
+#   file:
+#     src: /etc/alternatives/ksh-man
+#     dest: /usr/share/man/man1/mksh.1.gz
+#     state: link
 
-- name: update shell alternatives.
-  file:
-    src: /usr/bin/ksh
-    dest: /etc/alternatives/ksh
-    state: link
+# - name: update shell alternatives.
+#   file:
+#     src: /usr/bin/ksh
+#     dest: /etc/alternatives/ksh
+#     state: link
 
-- name: create the pg symlink. 
-  file:
-    src: /usr/bin/pg
-    dest: /usr/bin/less
-    state: link
+# - name: create the pg symlink. 
+#   file:
+#     src: /usr/bin/pg
+#     dest: /usr/bin/less
+#     state: link
