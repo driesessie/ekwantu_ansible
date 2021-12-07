@@ -1,0 +1,11 @@
+---
+- hosts: 192.168.66.129
+  remote_user: dries
+  become: yes
+  become_user: root
+  become_method: sudo
+  ignore_errors: yes
+  serial: 10
+  #Install and configure base packages here
+  roles:
+   - ssh

@@ -1,0 +1,12 @@
+---
+
+- hosts: all
+  remote_user: dries 
+  become: yes
+  become_user: root
+  become_method: sudo
+  ignore_errors: yes
+  gather_facts: yes
+  serial: 10
+  roles: 
+    - rhel7 

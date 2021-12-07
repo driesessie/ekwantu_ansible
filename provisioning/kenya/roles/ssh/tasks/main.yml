@@ -1,0 +1,35 @@
+---
+- name: Hardening SSHD
+  lineinfile:
+   path: /etc/ssh/sshd_config
+   regexp: "{{ regexp.item }}"
+   line: "{{ line.item }}"
+   state: present
+  loop:
+     - regexp: "{{^Ciphers}}"
+       line: "Ciphers aes128-ctr,aes192-ctr,aes256-ctr"
+     - regexp: "{{^MACs}}"
+       line: "MACs hmac-sha1,hmac-ripemd160"
+  notify: Reload sshd
+  handlers: Reload sshd
+     - name: Reload sshd
+       service:
+         name: sshd
+  tags: sshd
+
+- name: fix ssh Ciphers
+  lineinfile:
+  path: /etc/ssh/ssh_config
+  regexp: "{{ regexp.item }} "
+  line: "{{ line.item}}"
+  state: present
+  loop:
+    - regexp: "{{ ^Ciphers }}"
+      line: "ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes128-cbc"
+  notify: reload sshd
+  handlers: reload sshd
+    - name: reload sshd
+      service: sshd
+  - tags: sshd
+
+

@@ -1,0 +1,48 @@
+---
+- name: Hardening SSHD by updating the Ciphers
+  ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^Ciphers'
+      state: present
+      line: Ciphers aes128-ctr,aes192-ctr,aes256-ctr
+
+- name: Hardening SSHD with the correct MAC's.
+  ansible.builtin.lineinfile:
+     path: /etc/ssh/sshd_config
+     regexp: '^Macs'
+     state: present
+     line: MACs hmac-sha1,hmac-ripemd160
+
+ 
+        # - regexp: '^MACs'
+        #   line: MACs hmac-sha1,hmac-ripemd160
+
+  # notify: Reload sshd
+
+  # handlers:
+  #   - name: Reload sshd
+  #     service: sshd
+  #     state: reload
+
+#   tags: sshd
+
+- name: fix ssh Ciphers
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/ssh_config
+    regexp: '# Ciphers and keying'
+#       line: "{{ line.item }}"
+    state: present
+#       loop:
+#         #- regexp: '^Ciphers'
+    line: ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes128-cbc
+
+#   # notify: reload sshd
+
+#   # handlers:
+#   #   - name: reload sshd
+#   #     service: sshd
+#   #     state: reload
+
+#   tags: sshd
+
+# # 

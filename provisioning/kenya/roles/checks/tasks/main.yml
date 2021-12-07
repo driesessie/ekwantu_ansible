@@ -14,7 +14,7 @@
   shell: cat /etc/xinetd.d/rsi
   register: rsiexist
 
-- name: display existance if rsi config.
+- name: display existance of rsi config.
   debug:
     msg: "{{ rsiexist.stdout }}"
 
